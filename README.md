@@ -1,44 +1,48 @@
 # Paddy Leaf Disease Classification using ResNet-50 + Triplet Attention
 
 ## Overview
-Deep learning model untuk klasifikasi penyakit daun padi menggunakan arsitektur 
-ResNet-50 yang diintegrasikan dengan modul Triplet Attention. Dibangun dari scratch 
-(tanpa pretrained weights) menggunakan TensorFlow.
-
-## Problem
-Penyakit daun padi dapat menurunkan hasil panen hingga 40%. Identifikasi manual 
-memiliki keterbatasan inkonsistensi dan kesulitan deteksi dini — model ini hadir 
-sebagai solusi otomatis berbasis computer vision.
+This project implements an automatic paddy leaf disease classification system 
+using ResNet-50 integrated with Triplet Attention module. Paddy diseases can 
+reduce crop yields by up to 40%, making early and accurate detection critical 
+for agricultural productivity.
 
 ## Dataset
-- **Source:** Paddy Doctor (Kaggle)
-- **Total images:** 6.061
-- **Classes:** Brown Spot, Hispa, Leaf Blast, Healthy
-- **Split:** Stratified 5-Fold Cross Validation
+- **Source**: Paddy Doctor (Kaggle)
+- **Total images**: 6,061
+- **Classes**: Brown Spot, Hispa, Leaf Blast, Healthy
+- **Split method**: Stratified 5-Fold Cross Validation
 
 ## Model Architecture
-- Base: ResNet-50 (trained from scratch)
+- Base: ResNet-50 (trained from scratch, no pretrained weights)
 - Enhancement: Triplet Attention module
-- Comparison: ResNet-50 baseline vs ResNet-50 + Triplet Attention
-
-## Results
-
-| Model | Accuracy | F1-Score (Macro) |
-|-------|----------|-----------------|
-| ResNet-50 (baseline) | 85.41% | - |
-| ResNet-50 + Triplet Attention | **93.40%** | **0.93** |
-
-Notable improvement: Brown Spot recall meningkat dari 0.61 → 0.84
+- Framework: TensorFlow / Google Colab (T4 GPU)
 
 ## Experiments
-Diuji dengan 3 variasi learning rate: 0.001, 0.0001, 0.00001
-Best performance: learning rate 0.001
+Three learning rates were tested for both baseline and proposed model:
 
-## Files
-- `ResNet50.ipynb` — Baseline model implementation
-- `ResNet50_TA.ipynb` — ResNet-50 + Triplet Attention implementation
+| Model | Learning Rate | Val Accuracy | Test Accuracy | F1-Score |
+|-------|--------------|--------------|---------------|----------|
+| ResNet-50 | 0.001 | 69.93% | 85.41% | 0.84 |
+| ResNet-50 | 0.0001 | 72.50% | 84.25% | 0.83 |
+| ResNet-50 | 0.00001 | 56.11% | 65.95% | 0.59 |
+| ResNet-50 + Triplet Attention | 0.001 | 83.81% | **93.40%** | **0.93** |
+| ResNet-50 + Triplet Attention | 0.0001 | 83.44% | 92.83% | 0.93 |
+| ResNet-50 + Triplet Attention | 0.00001 | 56.77% | 66.69% | 0.62 |
 
-## Tech Stack
-- TensorFlow
-- Google Colab (T4 GPU)
-- Python
+## Key Results
+- Best model: ResNet-50 + Triplet Attention (LR=0.001)
+- Test Accuracy: **93.40%** (+7.99% vs baseline)
+- Brown Spot recall improved significantly: 0.61 → 0.84
+- Triplet Attention effectively enhanced feature extraction 
+  across channel, spatial, and temporal dimensions
+
+## Limitations & Future Work
+- Training curves showed fluctuation, suggesting potential 
+  instability — future work could explore learning rate scheduling
+- Only 4 of 10 available disease classes were used
+- Model trained from scratch; pretrained weights may further 
+  improve performance
+
+## Repository Structure
+├── ResNet50.ipynb          # Baseline model experiments
+└── ResNet50_TA.ipynb       # Proposed model with Triplet Attention
