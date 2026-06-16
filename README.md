@@ -106,6 +106,12 @@ Paddy leaf diseases can reduce crop yields by up to 40%. Manual identification i
 
 ---
 
+## References
+
+- Misra, D., Nalamada, T., Arasanipalai, A. U., & Hou, Q. (2021). Rotate to Attend: Convolutional Triplet Attention Module. *IEEE/CVF Winter Conference on Applications of Computer Vision (WACV 2021)*.
+
+---
+
 ## Framework & Environment
 
 - **Framework**: TensorFlow / Keras
