@@ -35,6 +35,8 @@ Paddy leaf diseases can reduce crop yields by up to 40%. Manual identification i
   - Branch 3: H-C (height-channel, via transpose)
   - Output: average of all three branches
 
+![Architecture Diagram](assets/architecture.png)
+
 ### Training Strategy
 - **5-Fold Stratified Cross Validation**
 - **Optimizer**: Adam
@@ -68,6 +70,12 @@ Paddy leaf diseases can reduce crop yields by up to 40%. Manual identification i
 | **Overall** | **0.97** | **0.97** | **0.97** |
 
 **Test Accuracy: 97.28% | Test Loss: 0.1563**
+
+### Training Curves (5-Fold)
+![Training Curves](assets/training_curves.png)
+
+### Confusion Matrix
+![Confusion Matrix](assets/confusion_matrix.png)
 
 ---
 
@@ -103,7 +111,3 @@ Paddy leaf diseases can reduce crop yields by up to 40%. Manual identification i
 - **Framework**: TensorFlow / Keras
 - **Platform**: Google Colab (T4 GPU)
 - **Language**: Python 3
-
----
-
-*Undergraduate thesis project — Informatics Engineering, Universitas Trunojoyo Madura (2025)*
